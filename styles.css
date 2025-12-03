@@ -26,10 +26,9 @@ body {
     box-shadow: 0 0 0 8px rgba(14, 171, 255, 0.2);
     width: 80%;
     max-height: 85vh;
-    max-width: 700px;
+    max-width: 800px;
     color: #fff;
     background: linear-gradient(135deg, #14323b,transparent);
-    padding: 20px 25px;
     border: 4px solid rgb(255, 253, 253);
     border-radius: 20px;
     text-align: center;
@@ -37,8 +36,40 @@ body {
     overflow-y: scroll;
     z-index: 1;
 }
+
 .container::-webkit-scrollbar{
     display: none;
+}
+.container .header-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 30px;
+    background: linear-gradient( rgba(0,0,0,0.2));
+     position: sticky;
+    top: 0;
+}
+.container.scrolled .header-container {
+ backdrop-filter: blur(12px);
+  background: linear-gradient( rgba(0,0,0,0.2));
+}
+.weather-title{
+    color: #c0c0c0;
+    font-size: 23px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.weather-color{
+    color: #3333f9;
+}
+.welcome-page{
+    padding: 20px 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.welcome-page h1{
+    font-size: 20px;
+    font-weight: 500;
+    color: rgb(255, 255, 255);
 }
 .search {
     width: 100%;
@@ -47,8 +78,7 @@ body {
     align-items: center;
     border: 2px solid rgb(20, 20, 20);
     border-radius: 30px;
-    position: sticky;
-    top: 10px;
+   
 }
 
 .search input {
@@ -89,12 +119,13 @@ button:hover {
 }
 
 .error {
-    font-size: 25px;
-    text-align: left;
-    margin-top: 10px;
-    display: none;
+    padding: 20px 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
-
+.error p{
+     font-size: 30px;
+     color: rgb(255, 29, 29);
+}
 .weather {
     display: none;
     min-height: 50%;
@@ -151,10 +182,27 @@ button:hover {
     font-size: 17px;
 
 }
+.footer-container{
+    position: static;
+    bottom: 0;
+    width: 100%;
+}
+.footer-container p{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    padding: 5px 2px;
+    color: #b3b3b3;
+}
 @media (max-width:650px) {
     #forecast {
-        display: grid;
     grid-template-columns: 2fr 2fr 2fr;
+}
+.welcome-page h1{
+    font-size: 18px;
+}
+.error p{
+     font-size: 25px;
 }
 }
 @media (max-width:500px) {
@@ -185,5 +233,25 @@ button:hover {
 }
 .city{
     font-size: 18px;
+}
+}
+@media (max-width:450px){
+    .container {
+    width: 100%;
+    border-radius: 8px;
+}
+.city-info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+}
+.temp {
+    font-size: 30px;
+}
+ #forecast {
+        display: grid;
+    grid-template-columns: 2fr 2fr;
 }
 }
