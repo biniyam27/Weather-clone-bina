@@ -8,8 +8,7 @@ document.querySelector(".welcome-page").style.display = "block";
 document.querySelector(".error").style.display = "none";
 document.querySelector(".weather").style.display = "none";
 async function checkWeather(city) {
-  // const response = await fetch(apiurl + city + `&appid=${apikey}`);
-  const response= await fetch("forecast.json")
+  const response = await fetch(apiurl + city + `&appid=${apikey}`);
   if (response.status == 404) {
     document.querySelector(".welcome-page").style.display = "none";
     document.querySelector(".error").style.display = "block";
@@ -21,11 +20,11 @@ async function checkWeather(city) {
   console.log(data);
 const place=data.city.name;
 const country=data.city.country? data.city.country : '';
-document.querySelector(".city").innerHTML = `<span>${place}, ${country}</span>`;
+document.querySelector(".city").innerHTML = place.toUpperCase() + " (" + country + ")";
     document.querySelector(".temp").innerHTML =
     Math.round(data.list[0].main.temp) + "°c";
     document.querySelector(".humidity").innerHTML = data.list[0].main.humidity + "%";
-    document.querySelector(".wind").innerHTML = data.list[0].wind.speed + " km/h";
+    document.querySelector(".wind").innerHTML = data.list[0].wind.speed + " m/s";
 
     if (data.list[0].weather[0].main == "Clouds") {
       icon.src = "images/clouds.png";
@@ -44,9 +43,9 @@ document.querySelector(".city").innerHTML = `<span>${place}, ${country}</span>`;
 
 
   const forecast = document.getElementById("forecast");
-  forecast.innerHTML = ""; // clear previous results
+  forecast.innerHTML = ""; 
 
-  const timezoneOffset = data.city.timezone; // seconds
+  const timezoneOffset = data.city.timezone; 
   const now = new Date();
 
   const nextForecasts = data.list.filter(item => {
@@ -83,7 +82,6 @@ document.querySelector(".city").innerHTML = `<span>${place}, ${country}</span>`;
     forecast.appendChild(div);
   });
 
-  document.querySelector(".city").innerHTML = data.city.name.toUpperCase();
   document.querySelector(".error").style.display = "none";
   document.querySelector(".weather").style.display = "block";
   document.querySelector(".welcome-page").style.display = "none";

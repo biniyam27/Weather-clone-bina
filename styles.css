@@ -100,7 +100,7 @@ body {
 .search button {
     border: 0;
     outline: 0;
-    background: #989898;
+    background: #0f0ffc;
     color: hsl(0, 0%, 100%);
     width: 25%;
     height: 50px;
